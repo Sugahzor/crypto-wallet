@@ -8,13 +8,6 @@ import javax.persistence.Id;
 import java.sql.Date;
 
 public class Transaction {
-//    transactionId
-//    userId
-//            (transactionType )
-//    transactionAmmount
-//            oldCurrencyId
-//    newCurrencyId
-//            executionDate
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long transactionId;
