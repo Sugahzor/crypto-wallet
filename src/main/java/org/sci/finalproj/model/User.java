@@ -8,30 +8,30 @@ import java.sql.Date;
 
 @Entity
 public class User {
-    private String name;
+    private String userEmail;
     private String userName;
-    private String password;
-    private Date dateOfBirth;
+    private String userPassword;
+    private Long userPhone;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long userId;
 
     public User() {
     }
 
-    public User(String name, String userName, String password, Date dateOfBirth) {
-        this.name = name;
+    public User(String userEmail, String userName, String userPassword, Long userPhone) {
+        this.userEmail = userEmail;
         this.userName = userName;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
+        this.userPassword = userPassword;
+        this.userPhone = userPhone;
     }
 
-    public String getName() {
-        return name;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getUserName() {
@@ -42,27 +42,23 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public Long getUserPhone() { return userPhone; }
+
+    public void setUserPhone(Long userPhone) { this.userPhone = userPhone; }
+
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
