@@ -1,24 +1,26 @@
 package org.sci.finalproj.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Asset {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long assetId;
     Long userId;
-    Long defaultCurrencyStableCoinID;
-    Long cryptoCoinId;
-    Double cryptoCoinValue;
+    Long coinId;
+    Double coinAmount;
 
-    public Asset(Long assetId, Long userId, Long defaultCurrencyStableCoinID, Long cryptoCoinId, Double cryptoCoinValue) {
-        this.assetId = assetId;
+    public Asset() {
+    }
+
+    public Asset(Long userId, Long coinId, Double coinAmount) {
         this.userId = userId;
-        this.defaultCurrencyStableCoinID = defaultCurrencyStableCoinID;
-        this.cryptoCoinId = cryptoCoinId;
-        this.cryptoCoinValue = cryptoCoinValue;
+        this.coinId = coinId;
+        this.coinAmount = coinAmount;
     }
 
     public Long getAssetId() {
@@ -37,27 +39,19 @@ public class Asset {
         this.userId = userId;
     }
 
-    public Long getDefaultCurrencyStableCoinID() {
-        return defaultCurrencyStableCoinID;
+    public Long getCoinId() {
+        return coinId;
     }
 
-    public void setDefaultCurrencyStableCoinID(Long defaultCurrencyStableCoinID) {
-        this.defaultCurrencyStableCoinID = defaultCurrencyStableCoinID;
+    public void setCoinId(Long coinId) {
+        this.coinId = coinId;
     }
 
-    public Long getCryptoCoinId() {
-        return cryptoCoinId;
+    public Double getCoinAmount() {
+        return coinAmount;
     }
 
-    public void setCryptoCoinId(Long cryptoCoinId) {
-        this.cryptoCoinId = cryptoCoinId;
-    }
-
-    public Double getCryptoCoinValue() {
-        return cryptoCoinValue;
-    }
-
-    public void setCryptoCoinValue(Double cryptoCoinValue) {
-        this.cryptoCoinValue = cryptoCoinValue;
+    public void setCoinAmount(Double coinAmount) {
+        this.coinAmount = coinAmount;
     }
 }

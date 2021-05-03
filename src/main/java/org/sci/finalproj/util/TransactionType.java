@@ -1,7 +1,7 @@
 package org.sci.finalproj.util;
 
 public enum TransactionType {
-    FICR, /* fiat - crypto */
-    CRCR, /* crypto - crypto */
-    CRFI  /* crypto - fiat */
+    FICR, /* fiat - crypto : buyCryptoAsset */
+    CRCR, /* crypto - crypto : exchangeCryptoAsset */
+    CRFI  /* crypto - fiat : exchangeCryptoAsset*/
 }
