@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AssetRepo extends CrudRepository<Asset, Long> {
     public Asset save(Asset asset); /* both POST and PUT ? */
-    public Asset findByCoinId(Long cryptoId);
+    public Asset findByCoinId(Long coinId);
     public void deleteById(Long assetId);
 }
