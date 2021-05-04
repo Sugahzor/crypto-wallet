@@ -21,6 +21,9 @@ public interface UserRepo extends CrudRepository<User, Long> {
     @Query("SELECT u FROM User u WHERE u.userName = :#{#jmn.userName}")
     public User customQuery1(@Param("jmn") User user);
 
+    @Query("SELECT u from User u WHERE u.userName = :username")
+    User findByUserNameParam(@Param("username") final String username);
+
 //    public boolean updateByName
 //    public boolean deleteByUserName
 

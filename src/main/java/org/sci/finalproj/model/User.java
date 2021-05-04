@@ -1,10 +1,6 @@
 package org.sci.finalproj.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.sql.Date;
+import javax.persistence.*;
 
 @Entity
 public class User {
