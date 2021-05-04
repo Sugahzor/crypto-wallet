@@ -27,7 +27,7 @@ public class UserService {
             LOGGER.info("User has not been found");
             return false;
         }
-        if (user.getPassword().equals(loginUser.getPassword())) {
+        if (user.getUserPassword().equals(loginUser.getUserPassword())) {
             LOGGER.info("User has been logged in");
             return true;
         }

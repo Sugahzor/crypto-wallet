@@ -2,11 +2,13 @@ package org.sci.finalproj.model;
 
 import org.sci.finalproj.util.TransactionType;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
+@Entity
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,16 +17,18 @@ public class Transaction {
     Long oldCurrencyId;
     Long newCurrencyId;
     TransactionType transactionType;
-    Double transactionAmmount;
+    Double transactionAmount;
     Date executionDate;
 
-    public Transaction(Long transactionId, Long userId, Long oldCurrencyId, Long newCurrencyId, TransactionType transactionType, Double transactionAmmount, Date executionDate) {
-        this.transactionId = transactionId;
+    public Transaction(){
+    }
+
+    public Transaction(Long userId, Long oldCurrencyId, Long newCurrencyId, TransactionType transactionType, Double transactionAmount, Date executionDate) {
         this.userId = userId;
         this.oldCurrencyId = oldCurrencyId;
         this.newCurrencyId = newCurrencyId;
         this.transactionType = transactionType;
-        this.transactionAmmount = transactionAmmount;
+        this.transactionAmount = transactionAmount;
         this.executionDate = executionDate;
     }
 
@@ -68,12 +72,12 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
-    public Double getTransactionAmmount() {
-        return transactionAmmount;
+    public Double getTransactionAmount() {
+        return transactionAmount;
     }
 
-    public void setTransactionAmmount(Double transactionAmmount) {
-        this.transactionAmmount = transactionAmmount;
+    public void setTransactionAmount(Double transactionAmount) {
+        this.transactionAmount = transactionAmount;
     }
 
     public Date getExecutionDate() {

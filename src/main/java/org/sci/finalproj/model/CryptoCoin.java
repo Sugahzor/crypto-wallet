@@ -1,9 +1,11 @@
 package org.sci.finalproj.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class CryptoCoin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,8 +13,10 @@ public class CryptoCoin {
     String cryptoCoinName;
     String cryptoCoinSymbol;
 
-    public CryptoCoin(Long cryptoCoinId, String cryptoCoinName, String cryptoCoinSymbol) {
-        this.cryptoCoinId = cryptoCoinId;
+    public CryptoCoin(){
+    }
+
+    public CryptoCoin(String cryptoCoinName, String cryptoCoinSymbol) {
         this.cryptoCoinName = cryptoCoinName;
         this.cryptoCoinSymbol = cryptoCoinSymbol;
     }
