@@ -1,9 +1,11 @@
 package org.sci.finalproj.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class FiatCoin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -11,8 +13,10 @@ public class FiatCoin {
     String fiatCoinName;
     String fiatCoinSymbol;
 
-    public FiatCoin(Long fiatCoinId, String fiatCoinName, String fiatCoinSymbol) {
-        this.fiatCoinId = fiatCoinId;
+    public FiatCoin(){
+    }
+
+    public FiatCoin(String fiatCoinName, String fiatCoinSymbol) {
         this.fiatCoinName = fiatCoinName;
         this.fiatCoinSymbol = fiatCoinSymbol;
     }

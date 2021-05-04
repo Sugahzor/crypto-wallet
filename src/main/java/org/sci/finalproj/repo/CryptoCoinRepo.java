@@ -1,4 +1,14 @@
 package org.sci.finalproj.repo;
 
-public class CryptoCoinRepo {
+import org.sci.finalproj.model.CryptoCoin;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public interface CryptoCoinRepo extends CrudRepository<CryptoCoin, Long> {
+
+    public CryptoCoin findByCryptoCoinSymbol(String cryptoCoinSymbol);
+    public Iterable<CryptoCoin> findAll();
+    public CryptoCoin save(CryptoCoin newCryptoCoin);
 }
