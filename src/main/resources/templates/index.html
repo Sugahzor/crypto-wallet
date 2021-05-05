@@ -8,5 +8,21 @@
 </head>
 <body>
 <div class="myClass">Hello, gusy!</div>
+
+<h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
+
+<table style="border: 1px solid red">
+    <tbody>
+        <tr th:each="user: ${myUsersList}">
+            <td th:if="${user.userName == 'Iulia1'}" th:text="me" />
+            <td th:unless="${user.userName == 'Iulia1'}" th:text="${user.userName}" />
+            <td th:text="${user.userEmail}" />
+        </tr>
+    </tbody>
+</table>
+
+
+
+
 </body>
 </html>

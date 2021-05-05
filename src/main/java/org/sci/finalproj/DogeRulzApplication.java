@@ -23,18 +23,19 @@ public class DogeRulzApplication /* implements CommandLineRunner */ {
 	private static AssetService assetService;
 
 	public static void main(String[] args) {
+		SpringApplication.run(DogeRulzApplication.class, args);
+//		runMyCode();
+	}
+
+	public static void runMyCode() {
 		final Long userId;
 		final Long defaultWalletCurrencyId;
-
-		SpringApplication.run(DogeRulzApplication.class, args);
-
 		// on Login Button click
 		String nameFromFrontend = "default";
 		String passwordFromFrontEnd = "defaultPass";
 		User myUser;
 		myUser = userRepo.findByUserName(nameFromFrontend);
-		if (myUser != null) {
-			userService.login(myUser);
+		if (myUser != null && userService.login(myUser)) {
 			userId = myUser.getUserId();
 			defaultWalletCurrencyId = myUser.getDefaultWalletCurrencyId();
 		} else {
@@ -48,7 +49,6 @@ public class DogeRulzApplication /* implements CommandLineRunner */ {
 		String cryptoSymbolFromFrontend = "DOGE";
 		double amountFromFrontend = 23.2;
 		assetService.buyCryptoAsset(amountFromFrontend, cryptoSymbolFromFrontend, defaultWalletCurrencyId, userId);
-
 	}
 
 //	@Override
