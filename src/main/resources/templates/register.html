@@ -8,23 +8,27 @@
 <form action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
     <table border="1">
         <tr>
-            <td><label text="User Name: " /></td>
+            <td><label th:text="'User Id: '" /></td>
+            <td><input type="number" th:field="*{userId}" /></td>
+        </tr>
+        <tr>
+            <td><label th:text="'User Name: '" /></td>
             <td><input type="text" th:field="*{userName}"/></td>
         </tr>
         <tr>
-            <td><label text="Email: " /></td>
+            <td><label th:text="'Email: '" /></td>
             <td><input type="text" th:field="*{userEmail}" /></td>
         </tr>
         <tr>
-            <td><label text="Password: " /></td>
+            <td><label th:text="'Password: '" /></td>
             <td><input type="text" th:field="*{userPassword}" /></td>
         </tr>
         <tr>
-            <td><label th:text="Phone: " /></td>
+            <td><label th:text="'Phone: '" /></td>
             <td><input type="number" th:field="*{userPhone}" /></td>
         </tr>
         <tr>
-            <td><label th:text="Default Currency: " /></td>
+            <td><label th:text="'Default Currency: '" /></td>
             <td><input type="number" th:field="*{defaultWalletCurrencyId}" /></td>
         </tr>
         <tr>
