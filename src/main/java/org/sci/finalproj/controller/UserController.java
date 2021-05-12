@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class UserController {
     @Autowired
     private UserService userService;
 
@@ -24,9 +24,32 @@ public class HomeController {
     }
 
     @RequestMapping("/register")
-    public String myRegisterPage() {
+    public String myRegisterPage(Model model) {
+        User emptyUser = new User();
+//        emptyUser.setUserId(1L);
+        model.addAttribute("user", emptyUser);
         return "register";
     }
+
+    @RequestMapping("/login")
+    public String myLoginPage(Model model) {
+        User emptyUser = new User();
+        model.addAttribute("user", emptyUser);
+        return "login";
+    }
+
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+    public String loginUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
+        // logic to process input data
+        boolean loginResult = userService.login(user);
+        if (loginResult) {
+            return hello(model, user.getUserEmail());
+        } else {
+            return "error";
+        }
+    }
+
+
 
     @RequestMapping("/")
     public String myDefaultPage() {
@@ -56,8 +79,12 @@ public class HomeController {
 
 		Date user1Birth =  new java.sql.Date(Calendar.getInstance().getTime().getTime());
         User user1 = new User("iulia@lol", "Iulia1", "Sugah1", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
-		User user2 = new User("iulia@lol", "Iulia2", "Sugah2", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
-		User user3 = new User("iulia@lol","Iulia3", "Sugah3", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
+		User user2 = new User("iulia2@lol", "Iulia2", "Sugah2", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
+		User user3 = new User("iulia3@lol","Iulia3", "Sugah3", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
+
+		userService.register(user1);
+        userService.register(user2);
+        userService.register(user3);
 
 		List<User> usersList = new ArrayList<>();
 		usersList.add(user1);

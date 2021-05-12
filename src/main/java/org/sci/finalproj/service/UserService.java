@@ -22,7 +22,7 @@ public class UserService {
     }
 
     public boolean login(User user) {
-        User loginUser = userRepo.findByUserName(user.getUserName());
+        User loginUser = userRepo.findByUserEmail(user.getUserEmail());
         if (loginUser == null) {
             LOGGER.info("User has not been found");
             return false;
