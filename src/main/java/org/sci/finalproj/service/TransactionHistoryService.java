@@ -4,5 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TransactionHistoryService {
-//    public void getTHForUserX(User user){}
+
+    //ramane aici asa in caz de nevoie
+
 }

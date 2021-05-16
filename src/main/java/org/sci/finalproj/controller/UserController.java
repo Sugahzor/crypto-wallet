@@ -78,9 +78,9 @@ public class UserController {
         // model = un camp din view/html
 
 		Date user1Birth =  new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        User user1 = new User("iulia@lol", "Iulia1", "Sugah1", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
-		User user2 = new User("iulia2@lol", "Iulia2", "Sugah2", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
-		User user3 = new User("iulia3@lol","Iulia3", "Sugah3", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
+        User user1 = new User("iulia12@lol", "Iulia1", "Sugah1", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
+		User user2 = new User("iulia212@lol", "Iulia2", "Sugah2", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
+		User user3 = new User("iulia312@lol","Iulia3", "Sugah3", 1234_5678_9012_3456L, 1234_5678_9012_3456L);
 
 		userService.register(user1);
         userService.register(user2);
