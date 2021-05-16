@@ -24,8 +24,8 @@ public interface UserRepo extends CrudRepository<User, Long> {
 //    @Query("SELECT u from User u WHERE u.userName = :username")
 //    User findByUserNameParam(@Param("username") final String username);
 
-//    public boolean updateByName
-//    public boolean deleteByUserName
+//    public boolean updateByName (String oldUsername, String newUserName);
+//    public boolean deleteByUserName (String userName);
 
 //    public void createUser() {
 //
