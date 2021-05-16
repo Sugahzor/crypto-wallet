@@ -1,6 +1,8 @@
 package org.sci.finalproj.controller;
 
+import org.sci.finalproj.model.Asset;
 import org.sci.finalproj.model.User;
+import org.sci.finalproj.service.AssetService;
 import org.sci.finalproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,15 +20,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AssetService assetService;
+
     @RequestMapping("/home")
     public String myIndexPage() {
         return "index";
     }
 
+    @RequestMapping("/")
+    public String myDefaultPage() {
+        return this.myIndexPage();
+    }
+
     @RequestMapping("/register")
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
-//        emptyUser.setUserId(1L);
         model.addAttribute("user", emptyUser);
         return "register";
     }
@@ -43,26 +52,11 @@ public class UserController {
         // logic to process input data
         boolean loginResult = userService.login(user);
         if (loginResult) {
-            return hello(model, user.getUserEmail());
+            return myWalletDetailsPage(model, user.getUserEmail());
         } else {
             return "error";
         }
     }
-
-
-
-    @RequestMapping("/")
-    public String myDefaultPage() {
-        return this.myIndexPage();
-    }
-
-//    @GetMapping({"/hello"})
-//    public String hello(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
-//        // http://localhost:8080/hello?name=maki
-//        // model = un camp din view/html
-//        model.addAttribute("name", name);
-//        return "index";
-//    }
 
     @GetMapping({"/hello"})
     public String hello(Model model, @RequestParam(value="name", required=false) String name) {
@@ -70,6 +64,18 @@ public class UserController {
         // model = un camp din view/html
         model.addAttribute("name", name);
         return "index";
+    }
+
+    @RequestMapping("/wallet-details")
+    public String myWalletDetailsPage(Model model, @RequestParam(value="name", required=false) String name) {
+        System.out.println("why isn't it navigating");
+
+        List<Asset> assetsList = assetService.getAllAssets();
+        model.addAttribute("name", name);
+        model.addAttribute("myAssetsList", assetsList);
+
+        System.out.println(assetsList.isEmpty() + "is empty?");
+        return "wallet-details";
     }
 
     @GetMapping({"/test"})

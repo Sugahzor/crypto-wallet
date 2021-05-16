@@ -9,4 +9,5 @@ public interface AssetRepo extends CrudRepository<Asset, Long> {
     public Asset save(Asset asset); /* both POST and PUT ? */
     public Asset findByCoinId(Long coinId);
     public void deleteById(Long assetId);
+    public Iterable<Asset> findAll();
 }
