@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head>
+    <link th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <title>Wallet Details</title>
+</head>
+<body>
+
+<h2 class="hello-title" th:text="'Hello, ' + ${name} + '!'"></h2>
+<div class="details-wrapper">
+    <div th:if="${myAssetsList.isEmpty()}" >No assets.</div>
+    <table th:if="${!myAssetsList.isEmpty()}"  style="border: 2px solid cyan">
+        <tbody>
+          <tr th:each="asset: ${myAssetsList}">
+            <td th:text="${asset.coinId}" />
+            <td th:text="${asset.coinAmount}" />
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
