@@ -15,11 +15,11 @@ public interface TransactionRepo extends CrudRepository<Transaction, Long> {
 
     public List<Transaction> findAll();
 
-    //attempt to query given a date selected by the user form interface
-    //eg: get TransactionHistory for userSelectedExecutionDate = 20.04.2021
-//    @Query("SELECT dbRow FROM Transaction dbRow WHERE dbRow.executionDate = :#{#transaction.executionDate}")
-//    public Transaction specificDateQuery(@Param("transaction") Transaction transaction);
-//
-//    @Query("SELECT row FROM Transaction row WHERE row.executionDate = :executionDate")
-//    Transaction findByDate(@Param("executionDate") final Date date);
+//    attempt to query given a date selected by the user form interface
+//    eg: get TransactionHistory for userSelectedExecutionDate = 20.04.2021
+    @Query("SELECT dbRow FROM Transaction dbRow WHERE dbRow.executionDate = :#{#transaction.executionDate}")
+    public Transaction specificDateQuery(@Param("transaction") Transaction transaction); /*make it list query*/
+
+    @Query("SELECT row FROM Transaction row WHERE row.executionDate = :executionDate")
+    Transaction findByDate(@Param("executionDate") final Date date);
 }

@@ -1,3 +1,16 @@
+body {
+  background: #ffffff url("dogecoin-logo.svg") no-repeat;
+  background-size: 50%;
+  background-attachment: fixed;
+  background-position: center;
+}
+.body P{
+  background: #ffffff url("dogecoin-logo.svg") no-repeat;
+  background-size: 50%;
+  background-attachment: fixed;
+  background-position: center;
+
+}
 .myClass {
     color: red;
 }
@@ -6,4 +19,55 @@
     width: 80vw;
     height: 80vh;
     background-color: #B1B1B1;
+}
+.body {
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+input {
+    border: none;
+    height: 1.5rem;
+    border-radius: 4px;
+    background-color: #f9eed9;
+    padding-left: 5px;
+}
+.register-form {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+}
+.table {
+    border-radius: 4px;
+    background-color: #CEAF67;
+}
+.register-form td, .register-form th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.register-form tr:hover {background-color: #ddd;}
+
+.register-form th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.submit {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid;
+    margin: 10% auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 2rem;
+    width: 35%;
+    background-color: #CEAF67;
 }
