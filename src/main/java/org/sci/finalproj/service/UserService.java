@@ -17,8 +17,14 @@ public class UserService {
     private UserRepo userRepo;
 
     public void register(User user) {
-        userRepo.save(user);
-        LOGGER.info("User has been registered");
+        User existingUser = userRepo.findByUserEmail(user.getUserEmail());
+
+        if(existingUser==null||!existingUser.getUserEmail().equals(user.getUserEmail())) {
+            userRepo.save(user);
+            LOGGER.info("User has been registered");
+        } else {
+            LOGGER.info("User is in DB");
+        }
     }
 
     public boolean login(User user) {

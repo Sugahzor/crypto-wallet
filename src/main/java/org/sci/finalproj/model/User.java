@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 public class User {
     private String userEmail;
+    @Column
     private String userName;
     private String userPassword;
     private Long userPhone;
