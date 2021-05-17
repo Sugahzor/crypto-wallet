@@ -1,27 +1,21 @@
 package org.sci.finalproj.controller;
 
-import org.sci.finalproj.model.Asset;
 import org.sci.finalproj.model.User;
-import org.sci.finalproj.service.AssetService;
 import org.sci.finalproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private AssetService assetService;
 
     @RequestMapping("/home")
     public String myIndexPage() {
@@ -48,13 +42,15 @@ public class UserController {
     }
 
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
-    public String loginUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
+    public ModelAndView loginUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
         // logic to process input data
         boolean loginResult = userService.login(user);
         if (loginResult) {
-            return myWalletDetailsPage(model, user.getUserEmail());
+            ModelAndView mv = new ModelAndView("redirect:/wallet-details");
+            mv.addObject("userEmail", user.getUserEmail());
+            return mv;
         } else {
-            return "error";
+            return new ModelAndView("error");
         }
     }
 
@@ -64,18 +60,6 @@ public class UserController {
         // model = un camp din view/html
         model.addAttribute("name", name);
         return "index";
-    }
-
-    @RequestMapping("/wallet-details")
-    public String myWalletDetailsPage(Model model, @RequestParam(value="name", required=false) String name) {
-        System.out.println("why isn't it navigating");
-
-        List<Asset> assetsList = assetService.getAllAssets();
-        model.addAttribute("name", name);
-        model.addAttribute("myAssetsList", assetsList);
-
-        System.out.println(assetsList.isEmpty() + "is empty?");
-        return "wallet-details";
     }
 
     @GetMapping({"/test"})
