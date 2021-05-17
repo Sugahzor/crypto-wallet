@@ -2,15 +2,12 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link th:href="@{/styles/styles.css}" rel="stylesheet" />
     <title>Register</title>
 </head>
-<body>
-<form action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
-    <table border="1">
-<!--        <tr>-->
-<!--            <td><label th:text="'User Id: '" /></td>-->
-<!--            <td><input type="number" th:field="*{userId}" /></td>-->
-<!--        </tr>-->
+<body class="body">
+<form class="center register-form" action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
+    <table border="1" class="table">
         <tr>
             <td><label th:text="'User Name: '" /></td>
             <td><input type="text" th:field="*{userName}"/></td>
@@ -31,11 +28,10 @@
             <td><label th:text="'Default Currency: '" /></td>
             <td><input type="number" th:field="*{defaultWalletCurrencyId}" /></td>
         </tr>
-        <tr>
-            <td><input type="submit" value="Submit" /></td>
-        </tr>
 
     </table>
+    <input type="submit" value="Submit" class="submit"/>
+
 </form>
 </body>
 </html>
