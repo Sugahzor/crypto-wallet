@@ -1,3 +1,9 @@
 .myClass {
     color: red;
 }
+
+.details-wrapper {
+    width: 80vw;
+    height: 80vh;
+    background-color: #B1B1B1;
+}
