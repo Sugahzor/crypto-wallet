@@ -1,28 +1,36 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
-<link th:href="@{/styles/styles.css}" rel="stylesheet" />
 
 <head>
+  <link th:href="@{/styles/styles.css}" rel="stylesheet"/>
   <title>Register</title>
 </head>
 <body>
-<form action="#" th:action="@{/loginUser}" th:object="${user}" method="post">
-  <table border="1">
-    <tr>
-      <td><label th:text="'Email: '" /></td>
-      <td><input type="text" th:field="*{userEmail}" /></td>
-    </tr>
-    <tr>
-      <td><label th:text="'Password: '" /></td>
-      <td><input type="password" th:field="*{userPassword}" /></td>
-    </tr>
+<a th:href="@{/}" >Home</a>
 
-    <tr>
-      <td><input type="submit" value="Submit" /></td>
-    </tr>
+<div class="login-title-wrapper">
+    <h3>
+        Login in yours wallet
+    </h3>
+</div>
 
-  </table>
+<form class="center register-form login-center" action="#" th:action="@{/loginUser}" th:object="${user}" method="post">
+    <table border="1" class="table">
+        <tr>
+            <td><label th:text="'Email: '"/></td>
+            <td><input type="text" th:field="*{userEmail}"/></td>
+        </tr>
+        <tr>
+            <td><label th:text="'Password: '"/></td>
+            <td><input type="password" th:field="*{userPassword}"/></td>
+        </tr>
+
+    </table>
+    <input type="submit" value="Submit" class="submit"/>
 </form>
+
+<a th:href="@{/register}" class="center anchor-position">Create account</a>
+
 </body>
 </html>

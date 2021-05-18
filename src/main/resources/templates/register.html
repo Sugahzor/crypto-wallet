@@ -6,6 +6,10 @@
     <title>Register</title>
 </head>
 <body class="body">
+
+<a th:href="@{/}" >Home<span class="bredc-decoration"> > </span></a>
+<a th:href="@{/login}" >Login</a>
+
 <form class="center register-form" action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
     <table border="1" class="table">
         <tr>
@@ -30,7 +34,7 @@
         </tr>
 
     </table>
-    <input type="submit" value="Submit" class="submit"/>
+    <input type="submit" value="Submit" class="submit" />
 
 </form>
 </body>
