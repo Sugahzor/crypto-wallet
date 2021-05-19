@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -86,8 +87,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
+    public String saveUser(@ModelAttribute("user") @Validated User user, BindingResult result, Model model) {
         // logic to process input data
+        if (result.hasErrors()) {
+            return "error";
+        }
         userService.register(user);
         return "index";
     }
