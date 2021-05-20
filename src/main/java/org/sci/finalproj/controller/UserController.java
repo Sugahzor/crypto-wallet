@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping("/home")
     public String myIndexPage() {
-        return "index";
+        return "redirect:login";
     }
 
     @RequestMapping("/")
@@ -46,6 +46,7 @@ public class UserController {
     public ModelAndView loginUser(@ModelAttribute("user") User user, BindingResult errors, Model model) {
         // logic to process input data
         boolean loginResult = userService.login(user);
+
         if (loginResult) {
             ModelAndView mv = new ModelAndView("redirect:/wallet-details");
             mv.addObject("userEmail", user.getUserEmail());
@@ -93,8 +94,7 @@ public class UserController {
             return "error";
         }
         userService.register(user);
-        return "index";
+        System.out.println(user);
+        return "login";
     }
-
-
 }
