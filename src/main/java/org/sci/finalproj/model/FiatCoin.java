@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class FiatCoin {
+public class FiatCoin implements SuperCoin{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long fiatCoinId;
@@ -43,5 +43,9 @@ public class FiatCoin {
 
     public void setFiatCoinSymbol(String fiatCoinSymbol) {
         this.fiatCoinSymbol = fiatCoinSymbol;
+    }
+
+    public String getCoinSymbol() {
+        return fiatCoinSymbol;
     }
 }

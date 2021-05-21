@@ -20,6 +20,27 @@
           </tr>
         </tbody>
     </table>
+
+        <form action="#" data-th-action="@{/action}" data-th-object="${newTransaction}" method="post">
+
+            <button type="submit" name="action" value="buy">Buy</button>
+            <button type="submit" name="action" value="exchange">Exchange</button>
+
+            <table border="1">
+                <tr>
+                    <td><label th:text="'Buy: '" /></td>
+                    <td><input type="text" th:field="*{oldCurrencyId}" /></td>
+                </tr>
+                <tr>
+                    <td><label th:text="'Amount: '" /></td>
+                    <td><input type="double" th:field="*{transactionAmount}" /></td>
+                </tr>
+                <tr>
+                    <td><label th:text="'Target coin: '" /></td>
+                    <td><input type="text" th:field="*{newCurrencyId}" /></td>
+                </tr>
+            </table>
+        </form>
 </div>
 
 </body>
