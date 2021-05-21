@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class CryptoCoin {
+public class CryptoCoin implements SuperCoin{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long cryptoCoinId;
@@ -43,5 +43,9 @@ public class CryptoCoin {
 
     public void setCryptoCoinSymbol(String cryptoCoinSymbol) {
         this.cryptoCoinSymbol = cryptoCoinSymbol;
+    }
+
+    public String getCoinSymbol() {
+        return cryptoCoinSymbol;
     }
 }

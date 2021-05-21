@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private static final Logger LOGGER = LogManager.getLogger(UserService.class);
 
-    // services can implement multiple repos;
     @Autowired
     private UserRepo userRepo;
 
@@ -56,6 +55,10 @@ public class UserService {
     public void deleteAccount(User userToDelete) {
         userRepo.delete(userToDelete);
         LOGGER.info("User has been deleted");
+    }
+
+    public User getUserByEmail(String userEmail) {
+        return userRepo.findByUserEmail(userEmail);
     }
 
 }

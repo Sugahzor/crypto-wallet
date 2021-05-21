@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FiatCoinRepo extends CrudRepository<FiatCoin, Long> {
 
+    public FiatCoin findByFiatCoinId(Long fiatCoinId);
+    public FiatCoin findByFiatCoinSymbol(String fiatCoinSymbol);
     public Iterable<FiatCoin> findAll();
 }
