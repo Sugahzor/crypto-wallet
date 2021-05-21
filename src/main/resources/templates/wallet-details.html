@@ -9,7 +9,7 @@
 </head>
 <body class="details-body">
 
-<h2 class="hello-title" th:text="'Hello, ' + ${userEmail} + '!'"></h2>
+<h2 class="hello-title" th:text="'Hello, ' + ${user.getUserName()} + '!'"></h2>
 <div class="details-wrapper">
     <div th:if="${myAssetsList.isEmpty()}" >No assets.</div>
     <table th:if="${!myAssetsList.isEmpty()}"  style="border: 2px solid cyan">
