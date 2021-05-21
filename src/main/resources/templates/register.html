@@ -8,23 +8,24 @@
 <body class="body">
 
 <a th:href="@{/}" >Home<span class="bredc-decoration"> > </span></a>
-<a th:href="@{/login}" >Login</a>
+<a th:href="@{/login}" >Login<span class="bredc-decoration"> > </span></a>
+<span>Register</span>
 
 <form class="center register-form" action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
     <table border="1" class="table">
         <tr>
             <td><label th:text="'User Name: '" /></td>
-            <td><input type="text" th:field="*{userName}"/></td>
+            <td><input type="text" th:field="*{userName}" required/></td>
             <p th:each="error: ${#fields.errors('userName')}"
                th:text="${error}">Validation error</p>
         </tr>
         <tr>
             <td><label th:text="'Email: '" /></td>
-            <td><input type="email" th:field="*{userEmail}" /></td>
+            <td><input type="email" th:field="*{userEmail}" required/></td>
         </tr>
         <tr>
             <td><label th:text="'Password: '" /></td>
-            <td><input type="password" th:field="*{userPassword}" /></td>
+            <td><input type="password" th:field="*{userPassword}" required/></td>
         </tr>
         <tr>
             <td><label th:text="'Phone: '" /></td>
