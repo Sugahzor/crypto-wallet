@@ -1,6 +1,8 @@
 package org.sci.finalproj.controller;
 
+import org.sci.finalproj.model.FiatCoin;
 import org.sci.finalproj.model.User;
+import org.sci.finalproj.service.FiatCoinService;
 import org.sci.finalproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import java.util.*;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private FiatCoinService fiatCoinService;
 
     @RequestMapping("/home")
     public String myIndexPage() {
@@ -32,6 +36,11 @@ public class UserController {
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
+
+        //List for the default currency dropdown :
+        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
+        fiatCoinList.forEach(fiatCoin -> System.out.println(fiatCoin.getFiatCoinSymbol()));
+
         return "register";
     }
 

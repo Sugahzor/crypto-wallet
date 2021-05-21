@@ -28,12 +28,21 @@ public class WalletDetailsController {
     @Autowired
     private UserService userService;
 
+    public List<CryptoCoin> cryptoCoinList;
+
     @RequestMapping(value = "/wallet-details", method = RequestMethod.GET)
     public String myWalletDetailsPage(@ModelAttribute("userEmail") String userEmail, RedirectAttributes redirectAttrs, BindingResult errors, Model model) {
         User user = userService.getUserByEmail(userEmail);
         List<Asset> assetsList = assetService.getAllAssets();
+
+        //List for the default currency dropdown :
+        cryptoCoinList = cryptoCoinService.getCryptoCoinList();
+        cryptoCoinList.forEach(crypto -> System.out.println(crypto.getCryptoCoinSymbol()));
+
         model.addAttribute("user", user);
         model.addAttribute("myAssetsList", assetsList);
+        model.addAttribute("allCryptoCoins", cryptoCoinList);
+
         return "wallet-details";
     }
 

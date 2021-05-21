@@ -5,6 +5,9 @@ import org.sci.finalproj.repo.CryptoCoinRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CryptoCoinService {
     @Autowired
@@ -12,5 +15,11 @@ public class CryptoCoinService {
 
     public CryptoCoin getCryptoByID(Long cryptoId) {
         return cryptoCoinRepo.findByCryptoCoinId(cryptoId);
+    }
+
+    public List<CryptoCoin> getCryptoCoinList() {
+        List<CryptoCoin> cryptoCoinList = new ArrayList<>();
+        cryptoCoinRepo.findAll().forEach(cryptoCoin -> cryptoCoinList.add(cryptoCoin));
+        return cryptoCoinList;
     }
 }
