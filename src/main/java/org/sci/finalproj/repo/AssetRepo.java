@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AssetRepo extends CrudRepository<Asset, Long> {
+
     public Asset save(Asset asset); /* both POST and PUT ? */
-    public Asset findByCoinId(Long coinId);
     public Asset findByCoinSymbol(String coinSymbol);
     public void deleteById(Long assetId);
     public Iterable<Asset> findAll();
+
 }

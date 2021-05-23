@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepo extends CrudRepository<Transaction, Long> {
-    public Transaction save(Transaction transaction);
 
+    public Transaction save(Transaction transaction);
     public List<Transaction> findAll();
 
 //    attempt to query given a date selected by the user form interface
@@ -22,4 +22,5 @@ public interface TransactionRepo extends CrudRepository<Transaction, Long> {
 
     @Query("SELECT row FROM Transaction row WHERE row.executionDate = :executionDate")
     Transaction findByDate(@Param("executionDate") final Date date);
+
 }

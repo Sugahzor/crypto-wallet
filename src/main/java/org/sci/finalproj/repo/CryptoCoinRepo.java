@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface CryptoCoinRepo extends CrudRepository<CryptoCoin, Long> {
 
     public CryptoCoin findByCryptoCoinSymbol(String cryptoCoinSymbol);
-    public CryptoCoin findByCryptoCoinId(Long cryptoCoinId);
     public Iterable<CryptoCoin> findAll();
     public CryptoCoin save(CryptoCoin newCryptoCoin);
+
 }

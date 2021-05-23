@@ -58,12 +58,9 @@ public class WalletDetailsController {
     @RequestMapping(value="/action", method=RequestMethod.POST, params="action=buy")
     public ModelAndView buy(@ModelAttribute("newTransaction") Transaction transaction, BindingResult errors, Model model) {
         double amount = transaction.getTransactionAmount();
-        String oldCoinSymbol = transaction.getOldCurrencySymbol();
+        String newCoinSymbol = transaction.getNewCurrencySymbol();
         String defaultSymbol = this.user.getDefaultCurrencySymbol();
-        FiatCoin defaultCoin = fiatCoinService.getFiatCoinBySymbol(defaultSymbol);
-        System.out.println(defaultCoin.getFiatCoinId() + " register ID broken");
-        Long defaultCurrencyId = defaultCoin.getFiatCoinId();
-        assetService.buyCryptoAsset(amount, oldCoinSymbol, defaultCurrencyId, this.user.getUserId());
+        assetService.buyCryptoAsset(amount, newCoinSymbol, defaultSymbol, this.user.getUserId());
         return null;
     }
 

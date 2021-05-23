@@ -13,10 +13,6 @@ public class CryptoCoinService {
     @Autowired
     CryptoCoinRepo cryptoCoinRepo;
 
-    public CryptoCoin getCryptoByID(Long cryptoId) {
-        return cryptoCoinRepo.findByCryptoCoinId(cryptoId);
-    }
-
     public List<CryptoCoin> getCryptoCoinList() {
         List<CryptoCoin> cryptoCoinList = new ArrayList<>();
         cryptoCoinRepo.findAll().forEach(cryptoCoin -> cryptoCoinList.add(cryptoCoin));
