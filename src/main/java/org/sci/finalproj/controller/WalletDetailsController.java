@@ -59,13 +59,17 @@ public class WalletDetailsController {
     public ModelAndView buy(@ModelAttribute("newTransaction") Transaction transaction, BindingResult errors, Model model) {
         double amount = transaction.getTransactionAmount();
         String newCoinSymbol = transaction.getNewCurrencySymbol();
-        String defaultSymbol = this.user.getDefaultCurrencySymbol();
-        assetService.buyCryptoAsset(amount, newCoinSymbol, defaultSymbol, this.user.getUserId());
+        String defaultSymbol = user.getDefaultCurrencySymbol();
+        assetService.buyCryptoAsset(amount, newCoinSymbol, defaultSymbol, user.getUserId());
         return null;
     }
 
     @RequestMapping(value="/action", method=RequestMethod.POST, params="action=exchange")
-    public ModelAndView exchange(@ModelAttribute("transaction") Transaction transaction, BindingResult errors, Model model) {
+    public ModelAndView exchange(@ModelAttribute("newTransaction") Transaction transaction, BindingResult errors, Model model) {
+        double amount = transaction.getTransactionAmount();
+        String newCoinSymbol = transaction.getNewCurrencySymbol();
+        String oldCoinSymbol = transaction.getOldCurrencySymbol();
+        assetService.exchangeCryptoAsset(amount, oldCoinSymbol, newCoinSymbol, user.getDefaultCurrencySymbol(), user.getUserId());
         return null;
     }
 
