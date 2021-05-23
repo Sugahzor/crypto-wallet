@@ -28,16 +28,16 @@
 
             <table border="1">
                 <tr>
-                    <td><label th:text="'Buy: '" /></td>
-                    <td><input type="text" th:field="*{oldCurrencyId}" /></td>
+                    <td><label th:text="'Source coin: '" /></td>
+                    <td><input type="text" th:field="*{oldCurrencySymbol}" /></td>
                 </tr>
                 <tr>
                     <td><label th:text="'Amount: '" /></td>
-                    <td><input type="double" th:field="*{transactionAmount}" /></td>
+                    <td><input type="number" th:field="*{transactionAmount}" /></td>
                 </tr>
                 <tr>
                     <td><label th:text="'Target coin: '" /></td>
-                    <td><input type="text" th:field="*{newCurrencyId}" /></td>
+                    <td><input type="text" th:field="*{newCurrencySymbol}" /></td>
                 </tr>
             </table>
         </form>

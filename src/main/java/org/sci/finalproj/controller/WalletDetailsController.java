@@ -29,12 +29,14 @@ public class WalletDetailsController {
     @Autowired
     private UserService userService;
 
+    public User user;
     public List<CryptoCoin> cryptoCoinList;
     public List<FiatCoin> fiatCoinList;
 
     @RequestMapping(value = "/wallet-details", method = RequestMethod.GET)
     public String myWalletDetailsPage(@ModelAttribute("userEmail") String userEmail, RedirectAttributes redirectAttrs, BindingResult errors, Model model) {
         User user = userService.getUserByEmail(userEmail);
+        this.user = user;
         Transaction transaction = new Transaction();
         List<Asset> assetsList = assetService.getAllAssets();
         List<SuperCoin> superCoinList = new ArrayList<>();
@@ -44,7 +46,6 @@ public class WalletDetailsController {
         fiatCoinList = fiatCoinService.getFiatCoinList();
         superCoinList.addAll(cryptoCoinList);
         superCoinList.addAll(fiatCoinList);
-        superCoinList.forEach(coin -> System.out.println(coin.getCoinSymbol()));
 
         model.addAttribute("user", user);
         model.addAttribute("newTransaction", transaction);
@@ -55,10 +56,14 @@ public class WalletDetailsController {
     }
 
     @RequestMapping(value="/action", method=RequestMethod.POST, params="action=buy")
-    public ModelAndView buy(@ModelAttribute("transaction") Transaction transaction, BindingResult errors, Model model) {
-        Long cryptoId = transaction.getOldCurrencyId();
-        CryptoCoin cryptoObject = cryptoCoinService.getCryptoByID(cryptoId);
-        assetService.buyCryptoAsset(transaction.getTransactionAmount(), cryptoObject.getCryptoCoinSymbol(), transaction.getOldCurrencyId(), transaction.getUserId());
+    public ModelAndView buy(@ModelAttribute("newTransaction") Transaction transaction, BindingResult errors, Model model) {
+        double amount = transaction.getTransactionAmount();
+        String oldCoinSymbol = transaction.getOldCurrencySymbol();
+        String defaultSymbol = this.user.getDefaultCurrencySymbol();
+        FiatCoin defaultCoin = fiatCoinService.getFiatCoinBySymbol(defaultSymbol);
+        System.out.println(defaultCoin.getFiatCoinId() + " register ID broken");
+        Long defaultCurrencyId = defaultCoin.getFiatCoinId();
+        assetService.buyCryptoAsset(amount, oldCoinSymbol, defaultCurrencyId, this.user.getUserId());
         return null;
     }
 

@@ -51,7 +51,7 @@ public class AssetService {
         // add or update asset :
         if (existentCryptoAsset == null) {
             //add
-            assetRepo.save(new Asset(userId, cryptoId, amount));
+            assetRepo.save(new Asset(userId, cryptoId, cryptoCoinSymbol, amount));
         } else {
             //update
             double existentAmount = existentCryptoAsset.getCoinAmount();
@@ -59,7 +59,7 @@ public class AssetService {
         }
         // add transaction to DB :
         Date currentSqlDate = new Date(System.currentTimeMillis());
-        transactionRepo.save(new Transaction(userId, defaultWalletCurrencyId, cryptoId, TransactionType.FICR, amount, currentSqlDate));
+        transactionRepo.save(new Transaction(userId, defaultAsset.getCoinSymbol(), cryptoCoinSymbol, TransactionType.FICR, amount, currentSqlDate));
     }
 
     public void exchangeCryptoAsset(double amount, String oldCoinSymbol, String newCoinSymbol, Long defaultWalletCurrencyId, Long userId) {
@@ -69,6 +69,7 @@ public class AssetService {
         Asset oldCoinAsset = assetRepo.findByCoinId(oldCoinId);
 
         FiatCoin defaultCurrency = fiatCoinRepo.findByFiatCoinId(defaultWalletCurrencyId);
+        String defaultCoinSymbol = defaultCurrency.getCoinSymbol();
         double amountInDefaultCurrency = ExchangeRateMock.exchangeRateService(amount, oldCoinSymbol, defaultWalletCurrencyId);
 
         // Set old coin asset - exit, delete or update
@@ -90,17 +91,17 @@ public class AssetService {
             double existingFiatAmount = existentDefaultAsset.getCoinAmount();
             existentDefaultAsset.setCoinAmount(existingFiatAmount + amountInDefaultCurrency);
         } else {
-            Asset newAsset = new Asset(userId, defaultWalletCurrencyId, amountInDefaultCurrency);
+            Asset newAsset = new Asset(userId, defaultWalletCurrencyId, defaultCoinSymbol, amountInDefaultCurrency);
             assetRepo.save(newAsset);
         }
 
         // 3 cases of exchange, to : defaultFiatCurrency, new crypto, new fiat
 
-        if (newCoinSymbol.equals(defaultCurrency.getFiatCoinSymbol())) {
+        if (newCoinSymbol.equals(defaultCoinSymbol)) {
             // CRFI transaction
             // add transaction to DB and exit; defaultAsset already set; oldCrypto already set
             Date currentSqlDate = new Date(System.currentTimeMillis());
-            transactionRepo.save(new Transaction(userId, defaultWalletCurrencyId, oldCoinId, TransactionType.CRFI, amountInDefaultCurrency, currentSqlDate));
+            transactionRepo.save(new Transaction(userId, oldCoinSymbol, defaultCoinSymbol, TransactionType.CRFI, amountInDefaultCurrency, currentSqlDate));
             return;
         }
         if (newCoinCrypto != null) {
@@ -145,13 +146,14 @@ public class AssetService {
             existentNewCoinAsset.setCoinAmount(existentAmount + amountInNewFiat);
         } else {
             // add asset
-            Asset newCoinFiatAsset = new Asset(userId, newCoinFiat.getFiatCoinId(), amountInNewFiat);
+            Asset newCoinFiatAsset = new Asset(userId, newCoinFiat.getFiatCoinId(), newFiatSymbol, amountInNewFiat);
             assetRepo.save(newCoinFiatAsset);
         }
 
         // add transaction to DB
+        String defaultCoinSymbol = defaultCurrencyAsset.getCoinSymbol();
         Date currentSqlDate = new Date(System.currentTimeMillis());
-        transactionRepo.save(new Transaction(userId, defaultWalletCurrencyId, newFiatId, TransactionType.FIFI, amountInDefaultCurrency,currentSqlDate));
+        transactionRepo.save(new Transaction(userId, defaultCoinSymbol, newFiatSymbol, TransactionType.FIFI, amountInDefaultCurrency,currentSqlDate));
     }
 
 }

@@ -37,10 +37,6 @@ public class CryptoCoin implements SuperCoin{
         this.cryptoCoinName = cryptoCoinName;
     }
 
-    public String getCryptoCoinSymbol() {
-        return cryptoCoinSymbol;
-    }
-
     public void setCryptoCoinSymbol(String cryptoCoinSymbol) {
         this.cryptoCoinSymbol = cryptoCoinSymbol;
     }

@@ -18,4 +18,8 @@ public class FiatCoinService {
         fiatCoinRepo.findAll().forEach(fiatCoin -> fiatCoinList.add(fiatCoin));
         return fiatCoinList;
     }
+
+    public FiatCoin getFiatCoinBySymbol(String coinSymbol) {
+        return fiatCoinRepo.findByFiatCoinSymbol(coinSymbol);
+    }
 }
