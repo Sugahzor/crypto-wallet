@@ -21,7 +21,7 @@ public class CryptoCoin implements SuperCoin{
         this.cryptoCoinSymbol = cryptoCoinSymbol;
     }
 
-    public Long getCryptoCoinId() {
+    public Long getCoinId() {
         return cryptoCoinId;
     }
 
@@ -44,4 +44,5 @@ public class CryptoCoin implements SuperCoin{
     public String getCoinSymbol() {
         return cryptoCoinSymbol;
     }
+
 }

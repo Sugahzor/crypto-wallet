@@ -51,7 +51,7 @@ public class WalletDetailsController {
         model.addAttribute("newTransaction", transaction);
         model.addAttribute("myAssetsList", assetsList);
         model.addAttribute("superCoinList", superCoinList);
-
+        superCoinList.forEach(superCoin -> System.out.println(superCoin.getCoinSymbol()));
         return "wallet-details";
     }
 

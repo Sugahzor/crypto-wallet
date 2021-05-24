@@ -2,42 +2,48 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <link th:href="@{/styles/styles.css}" rel="stylesheet"/>
     <title>Register</title>
 </head>
 <body class="body">
 
-<a th:href="@{/}" >Home<span class="bredc-decoration"> > </span></a>
-<a th:href="@{/login}" >Login<span class="bredc-decoration"> > </span></a>
+<a th:href="@{/}">Home<span class="bredc-decoration"> > </span></a>
+<a th:href="@{/login}">Login<span class="bredc-decoration"> > </span></a>
 <span>Register</span>
 
 <form class="center register-form" action="#" th:action="@{/saveUser}" th:object="${user}" method="post">
     <table border="1" class="table">
         <tr>
-            <td><label th:text="'User Name: '" /></td>
+            <td><label th:text="'User Name: '"/></td>
             <td><input type="text" th:field="*{userName}" required/></td>
             <p th:each="error: ${#fields.errors('userName')}"
                th:text="${error}">Validation error</p>
         </tr>
         <tr>
-            <td><label th:text="'Email: '" /></td>
+            <td><label th:text="'Email: '"/></td>
             <td><input type="email" th:field="*{userEmail}" required/></td>
         </tr>
         <tr>
-            <td><label th:text="'Password: '" /></td>
+            <td><label th:text="'Password: '"/></td>
             <td><input type="password" th:field="*{userPassword}" required/></td>
         </tr>
         <tr>
-            <td><label th:text="'Phone: '" /></td>
-            <td><input type="number" th:field="*{userPhone}" /></td>
+            <td><label th:text="'Phone: '"/></td>
+            <td><input type="number" th:field="*{userPhone}"/></td>
         </tr>
         <tr>
-            <td><label th:text="'Default Currency: '" /></td>
-            <td><input type="text" th:field="*{defaultCurrencySymbol}" required/></td>
+            <td><label th:text="'Default Currency: '"/></td>
+            <td>
+                <select id="coin" name="coin" th:field="*{defaultCurrencySymbol}">
+                    <option th:each="coin : ${fiatCoinList}" th:value="${coin.getCoinId()}"
+                            th:text="${coin.getCoinSymbol()}">
+                    </option>
+                </select>
+            </td>
         </tr>
 
     </table>
-    <input type="submit" value="Submit" class="submit" />
+    <input type="submit" value="Submit" class="submit"/>
 
 </form>
 </body>

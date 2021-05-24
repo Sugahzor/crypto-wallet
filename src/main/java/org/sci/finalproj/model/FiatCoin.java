@@ -44,4 +44,8 @@ public class FiatCoin implements SuperCoin{
     public String getCoinSymbol() {
         return fiatCoinSymbol;
     }
+
+    public Long getCoinId() {
+        return fiatCoinId;
+    }
 }
