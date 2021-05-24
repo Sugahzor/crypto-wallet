@@ -37,10 +37,6 @@ public class FiatCoin implements SuperCoin{
         this.fiatCoinName = fiatCoinName;
     }
 
-    public String getFiatCoinSymbol() {
-        return fiatCoinSymbol;
-    }
-
     public void setFiatCoinSymbol(String fiatCoinSymbol) {
         this.fiatCoinSymbol = fiatCoinSymbol;
     }

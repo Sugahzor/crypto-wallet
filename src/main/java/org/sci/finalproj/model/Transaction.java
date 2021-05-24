@@ -14,8 +14,8 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long transactionId;
     Long userId;
-    Long oldCurrencyId;
-    Long newCurrencyId;
+    String oldCurrencySymbol;
+    String newCurrencySymbol;
     TransactionType transactionType;
     Double transactionAmount;
     Date executionDate;
@@ -23,10 +23,10 @@ public class Transaction {
     public Transaction(){
     }
 
-    public Transaction(Long userId, Long oldCurrencyId, Long newCurrencyId, TransactionType transactionType, Double transactionAmount, Date executionDate) {
+    public Transaction(Long userId, String oldCurrencySymbol, String newCurrencySymbol, TransactionType transactionType, Double transactionAmount, Date executionDate) {
         this.userId = userId;
-        this.oldCurrencyId = oldCurrencyId;
-        this.newCurrencyId = newCurrencyId;
+        this.oldCurrencySymbol = oldCurrencySymbol;
+        this.newCurrencySymbol = newCurrencySymbol;
         this.transactionType = transactionType;
         this.transactionAmount = transactionAmount;
         this.executionDate = executionDate;
@@ -48,20 +48,20 @@ public class Transaction {
         this.userId = userId;
     }
 
-    public Long getOldCurrencyId() {
-        return oldCurrencyId;
+    public String getOldCurrencySymbol() {
+        return oldCurrencySymbol;
     }
 
-    public void setOldCurrencyId(Long oldCurrencyId) {
-        this.oldCurrencyId = oldCurrencyId;
+    public void setOldCurrencySymbol(String oldCurrencySymbol) {
+        this.oldCurrencySymbol = oldCurrencySymbol;
     }
 
-    public Long getNewCurrencyId() {
-        return newCurrencyId;
+    public String getNewCurrencySymbol() {
+        return newCurrencySymbol;
     }
 
-    public void setNewCurrencyId(Long newCurrencyId) {
-        this.newCurrencyId = newCurrencyId;
+    public void setNewCurrencySymbol(String newCurrencySymbol) {
+        this.newCurrencySymbol = newCurrencySymbol;
     }
 
     public TransactionType getTransactionType() {

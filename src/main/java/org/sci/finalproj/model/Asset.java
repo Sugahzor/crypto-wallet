@@ -11,15 +11,15 @@ public class Asset {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long assetId;
     Long userId;
-    Long coinId;
+    String coinSymbol;
     Double coinAmount;
 
     public Asset() {
     }
 
-    public Asset(Long userId, Long coinId, Double coinAmount) {
+    public Asset(Long userId, String coinSymbol, Double coinAmount) {
         this.userId = userId;
-        this.coinId = coinId;
+        this.coinSymbol = coinSymbol;
         this.coinAmount = coinAmount;
     }
 
@@ -39,12 +39,12 @@ public class Asset {
         this.userId = userId;
     }
 
-    public Long getCoinId() {
-        return coinId;
+    public String getCoinSymbol() {
+        return coinSymbol;
     }
 
-    public void setCoinId(Long coinId) {
-        this.coinId = coinId;
+    public void setCoinSymbol(String coinSymbol) {
+        this.coinSymbol = coinSymbol;
     }
 
     public Double getCoinAmount() {
