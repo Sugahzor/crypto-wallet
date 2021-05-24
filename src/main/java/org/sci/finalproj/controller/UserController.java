@@ -36,9 +36,8 @@ public class UserController {
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
-                //List for the default currency dropdown :
+        //List for the default currency dropdown :
         List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
-        System.out.println(fiatCoinList);
         model.addAttribute("fiatCoinList", fiatCoinList);
         return "register";
     }
