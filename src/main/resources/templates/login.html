@@ -20,11 +20,11 @@
     <table border="1" class="table">
         <tr>
             <td><label th:text="'Email: '"/></td>
-            <td><input type="text" th:field="*{userEmail}"/></td>
+            <td><input type="text" th:field="*{userEmail}" required/></td>
         </tr>
         <tr>
             <td><label th:text="'Password: '"/></td>
-            <td><input type="password" th:field="*{userPassword}"/></td>
+            <td><input type="password" th:field="*{userPassword}" required/></td>
         </tr>
 
     </table>

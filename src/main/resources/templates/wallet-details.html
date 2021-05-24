@@ -6,8 +6,13 @@
 <head>
     <link th:href="@{/styles/styles.css}" rel="stylesheet" />
     <title>Wallet Details</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 </head>
 <body class="details-body">
+
+<a th:href="@{/}" >Home<span class="bredc-decoration"> > </span></a>
+<a th:href="@{/login}" >Login<span class="bredc-decoration"> > </span></a>
+<span>Wallet details</span>
 
 <h2 class="hello-title" th:text="'Hello, ' + ${user.getUserName()} + '!'"></h2>
 <div class="details-wrapper">
@@ -29,7 +34,13 @@
             <table border="1">
                 <tr>
                     <td><label th:text="'Source coin: '" /></td>
-                    <td><input type="text" th:field="*{oldCurrencySymbol}" /></td>
+<!--                    <td><input type="text" th:field="*{oldCurrencySymbol}" /></td>-->
+                    <td>
+                    <select id="coin" name="coin">
+                        <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}" th:text="${coin.getCoinSymbol()}">
+                        </option>
+                    </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><label th:text="'Amount: '" /></td>
@@ -40,6 +51,10 @@
                     <td><input type="text" th:field="*{newCurrencySymbol}" /></td>
                 </tr>
             </table>
+<!--            <select id="coin" name="coin">-->
+<!--                <option th:each="coin : ${superCoinList}" th:value="${coin.cryptoCoinId}" th:text="${coin.cryptoCoinName}">-->
+<!--                </option>-->
+<!--            </select>-->
         </form>
 </div>
 
