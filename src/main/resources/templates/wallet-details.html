@@ -36,7 +36,7 @@
                     <td><label th:text="'Source coin: '" /></td>
 <!--                    <td><input type="text" th:field="*{oldCurrencySymbol}" /></td>-->
                     <td>
-                    <select id="coin" name="coin">
+                    <select id="oldCoin" name="oldCoin" th:field="*{oldCurrencySymbol}">
                         <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}" th:text="${coin.getCoinSymbol()}">
                         </option>
                     </select>
@@ -48,13 +48,15 @@
                 </tr>
                 <tr>
                     <td><label th:text="'Target coin: '" /></td>
-                    <td><input type="text" th:field="*{newCurrencySymbol}" /></td>
+<!--                    <td><input type="text" th:field="*{newCurrencySymbol}" /></td>-->
+                    <td>
+                    <select id="newCoin" name="newCoin" th:field="*{newCurrencySymbol}">
+                        <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}" th:text="${coin.getCoinSymbol()}">
+                        </option>
+                    </select>
+                    </td>
                 </tr>
             </table>
-<!--            <select id="coin" name="coin">-->
-<!--                <option th:each="coin : ${superCoinList}" th:value="${coin.cryptoCoinId}" th:text="${coin.cryptoCoinName}">-->
-<!--                </option>-->
-<!--            </select>-->
         </form>
 </div>
 
