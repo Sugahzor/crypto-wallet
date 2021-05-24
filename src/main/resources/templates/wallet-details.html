@@ -17,7 +17,13 @@
 <h2 class="hello-title" th:text="'Hello, ' + ${user.getUserName()} + '!'"></h2>
 <div class="details-wrapper">
     <div th:if="${myAssetsList.isEmpty()}" >No assets.</div>
-    <table th:if="${!myAssetsList.isEmpty()}"  style="border: 2px solid cyan">
+    <table th:if="${!myAssetsList.isEmpty()}"  border="1" class="table"  style="border: 1px solid cyan">
+        <thead>
+        <tr>
+            <td>Coin</td>
+            <td>Amount</td>
+        </tr>
+        </thead>
         <tbody>
           <tr th:each="asset: ${myAssetsList}">
             <td th:text="${asset.coinSymbol}" />

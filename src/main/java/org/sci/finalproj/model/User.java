@@ -8,6 +8,7 @@ public class User {
     private String userName;
     private String userPassword;
     private Long userPhone;
+    private Long defaultWalletCurrencyId;
     private String defaultCurrencySymbol;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +16,7 @@ public class User {
 
     public User() {
     }
+
     public User(String userEmail, String userName, String userPassword, Long userPhone, String defaultCurrencySymbol) {
         this.userEmail = userEmail;
         this.userName = userName;
@@ -49,9 +51,13 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public Long getUserPhone() { return userPhone; }
+    public Long getUserPhone() {
+        return userPhone;
+    }
 
-    public void setUserPhone(Long userPhone) { this.userPhone = userPhone; }
+    public void setUserPhone(Long userPhone) {
+        this.userPhone = userPhone;
+    }
 
     public Long getUserId() {
         return userId;
@@ -61,11 +67,20 @@ public class User {
         this.userId = userId;
     }
 
+
     public String getDefaultCurrencySymbol() {
         return defaultCurrencySymbol;
     }
 
     public void setDefaultCurrencySymbol(String defaultCurrencySymbol) {
         this.defaultCurrencySymbol = defaultCurrencySymbol;
+    }
+
+    public Long getDefaultWalletCurrencyId() {
+        return defaultWalletCurrencyId;
+    }
+
+    public void setDefaultWalletCurrencyId(Long defaultWalletCurrencyId) {
+        this.defaultWalletCurrencyId = defaultWalletCurrencyId;
     }
 }

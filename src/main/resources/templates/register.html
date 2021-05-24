@@ -34,9 +34,9 @@
         <tr>
             <td><label th:text="'Default Currency: '"/></td>
             <td>
-                <select id="coin" name="coin" th:field="*{defaultCurrencySymbol}">
+                <select id="coin" name="coin" th:field="*{defaultWalletCurrencyId}">
                     <option th:each="coin : ${fiatCoinList}" th:value="${coin.getCoinId()}"
-                            th:text="${coin.getCoinSymbol()}">
+                            th:text="${coin.getFiatCoinName()}">
                     </option>
                 </select>
             </td>
