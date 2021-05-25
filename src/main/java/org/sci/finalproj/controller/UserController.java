@@ -1,7 +1,9 @@
 package org.sci.finalproj.controller;
 
+import org.sci.finalproj.model.CryptoCoin;
 import org.sci.finalproj.model.FiatCoin;
 import org.sci.finalproj.model.User;
+import org.sci.finalproj.service.CryptoCoinService;
 import org.sci.finalproj.service.FiatCoinService;
 import org.sci.finalproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private FiatCoinService fiatCoinService;
+    @Autowired
+    private CryptoCoinService cryptoCoinService;
 
     @RequestMapping("/home")
     public String myIndexPage() {
@@ -39,7 +43,27 @@ public class UserController {
         //List for the default currency dropdown :
         List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
         model.addAttribute("fiatCoinList", fiatCoinList);
+
+        FiatCoin fiatCoin = new FiatCoin("Euro","€");
+        FiatCoin fiatCoin1 = new FiatCoin("Dollarelul (Bo$$ de Bo$$ ","$");
+        FiatCoin fiatCoin2 = new FiatCoin("Leutzul Greu ","RON ");
+
+        fiatCoinService.register(fiatCoin);
+        fiatCoinService.register(fiatCoin1);
+        fiatCoinService.register(fiatCoin2);
+
+        CryptoCoin cryptoCoin = new CryptoCoin("Dogecoin","Ð");
+        CryptoCoin cryptoCoin1 = new CryptoCoin("Bitcoin","₿");
+        CryptoCoin cryptoCoin2 = new CryptoCoin("Ether","Ξ");
+
+        cryptoCoinService.register(cryptoCoin);
+        cryptoCoinService.register(cryptoCoin1);
+        cryptoCoinService.register(cryptoCoin2);
+
         return "register";
+
+
+
     }
 
     @RequestMapping("/login")

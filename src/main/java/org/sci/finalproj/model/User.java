@@ -1,6 +1,8 @@
 package org.sci.finalproj.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -8,7 +10,11 @@ public class User {
     private String userName;
     private String userPassword;
     private Long userPhone;
-    private Long defaultWalletCurrencyId;
+
+    @ManyToOne
+    @JoinColumn(name = "fiatCoinId", referencedColumnName = "userId")
+    private User defaultWalletCurrencyId;
+
     private String defaultCurrencySymbol;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -76,11 +82,11 @@ public class User {
         this.defaultCurrencySymbol = defaultCurrencySymbol;
     }
 
-    public Long getDefaultWalletCurrencyId() {
+    public User getDefaultWalletCurrencyId() {
         return defaultWalletCurrencyId;
     }
 
-    public void setDefaultWalletCurrencyId(Long defaultWalletCurrencyId) {
+    public void setDefaultWalletCurrencyId(User defaultWalletCurrencyId) {
         this.defaultWalletCurrencyId = defaultWalletCurrencyId;
     }
 }

@@ -1,6 +1,9 @@
 package org.sci.finalproj.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.sci.finalproj.model.FiatCoin;
+import org.sci.finalproj.model.User;
 import org.sci.finalproj.repo.FiatCoinRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,21 @@ import java.util.List;
 public class FiatCoinService {
     @Autowired
     private FiatCoinRepo fiatCoinRepo;
+
+    private static final Logger LOGGER = LogManager.getLogger(UserService.class);
+
+
+
+    public void register(FiatCoin fiatCoin) {
+        FiatCoin existinFiat = fiatCoinRepo.findByFiatCoinSymbol(fiatCoin.getCoinSymbol());
+
+        if(existinFiat==null||!existinFiat.getFiatCoinName().equals(fiatCoin.getFiatCoinName())) {
+            fiatCoinRepo.save(fiatCoin);
+            LOGGER.info("Fiat has been registered");
+        } else {
+            LOGGER.info("fiat is in DB");
+        }
+    }
 
     public List<FiatCoin> getFiatCoinList() {
         List<FiatCoin> fiatCoinList = new ArrayList<>();
