@@ -1,6 +1,6 @@
 body {
   background: #ffffff url('dogecoin-logo.svg') no-repeat;
-  background-size: 50%;
+  background-size: 50vw;
   background-attachment: fixed;
   background-position: center;
 }
@@ -23,6 +23,7 @@ body {
   width: 80vw;
   height: 80vh;
   background-color: transparent;
+  margin: auto;
 }
 .login-title-wrapper {
   position: absolute;
@@ -30,6 +31,9 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+h2 {
+text-align: center;
 }
 h3 {
     margin-bottom: 0;
@@ -110,4 +114,109 @@ font-size: 1.2rem;
 }
 a:hover {
 color: #b58634;
+}
+.asset-container {
+display: flex;
+flex-direction: column;
+}
+.asset-container > h3 {
+margin-top: 0;
+}
+.table-asset {
+font-size: 1.5rem;
+background-color: #5f658b;
+color: #fff;
+text-align: center;
+}
+.cell-width {
+width: 180px;
+}
+.cell-amount {
+text-align: end;
+}
+.transaction-form-wrapper {
+    display: flex;
+    margin: 1% 0;
+    justify-content: space-between;
+    padding-top: 6%
+}
+.symbol-select {
+    font-size: 2rem;
+    color: #fff;
+}
+.transaction-form-wrapper > form > .transaction-view > .transaction-view-borders > input {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    align-self: center;
+    margi-top: 5px;
+    text-align: right;
+    min-width: 250px;
+    max-width: 15vw;
+    padding: 5px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.transaction-view {
+    border-radius: 5px;
+    background-color: #fff;
+    outline: none;
+    padding: 0;
+    margin: 5px 0;
+    display: inline-flex;
+}
+.transaction-view-borders {
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+    outline: none;
+    padding-top: 5px;
+}
+.select-bkg-old {
+    background-color: #008b8b;
+    border-radius: 5px 0 0 5px;
+}
+.select-bkg-new {
+    background-color: #4169e1;
+    border-radius: 0 5px 5px 0;
+}
+.btns-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    font-weight: 700;
+}
+.label-wrapper {
+    justify-content: space-between;
+}
+.transaction-submit {
+    position: inherit;
+    margin: 3%;
+    width: 20%;
+    transform: none;
+    border-radius: 5px;
+}
+.buy {
+background-color: #008b8b
+}
+.exchange {
+background-color: #4169e1
+}
+.sell {
+background-image:  linear-gradient(to right, #008b8b , #4169e1);
+}
+.asset-history-container {
+    display: flex;
+    justify-content: space-between;
+}
+.history-container > h2 {
+margin-top: 0;
+}
+.history-container {
+    width: 60%;
+    height: 255px;
+    background-color: #7fffd4a3;
 }
