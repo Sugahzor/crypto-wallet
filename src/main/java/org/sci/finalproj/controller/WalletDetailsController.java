@@ -51,6 +51,8 @@ public class WalletDetailsController {
         model.addAttribute("newTransaction", transaction);
         model.addAttribute("myAssetsList", assetsList);
         model.addAttribute("superCoinList", superCoinList);
+        model.addAttribute("fiatCoinList", fiatCoinList);
+        model.addAttribute("cryptoCoinList", cryptoCoinList);
         return "wallet-details";
     }
 

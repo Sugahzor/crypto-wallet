@@ -36,7 +36,7 @@
             </table>
         </div>
         <div class="history-container">
-            <h2>History</h2>
+            <h3>History</h3>
         </div>
     </div>
     <div class="transaction-form-wrapper">
@@ -50,7 +50,7 @@
             <div class="transaction-view">
                 <select class="symbol-select select-bkg-old" id="oldCoin" name="oldCoin"
                         th:field="*{oldCurrencySymbol}">
-                    <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}"
+                    <option th:each="coin : ${fiatCoinList}" th:value="${coin.getCoinId()}"
                             th:text="${coin.getCoinSymbol()}">
                     </option>
                 </select>
@@ -59,7 +59,7 @@
                 </div>
                 <select class="symbol-select select-bkg-new" id="newCoin" name="newCoin"
                         th:field="*{newCurrencySymbol}">
-                    <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}"
+                    <option th:each="coin : ${cryptoCoinList}" th:value="${coin.getCoinId()}"
                             th:text="${coin.getCoinSymbol()}">
                     </option>
                 </select>
@@ -67,9 +67,6 @@
             </br>
             <div class="btns-wrapper">
                 <button class="submit transaction-submit buy" type="submit" name="action" value="buy">Buy</button>
-                <button class="submit transaction-submit exchange" type="submit" name="action" value="exchange">
-                    Exchange
-                </button>
             </div>
         </form>
         <form action="#" data-th-action="@{/action}" data-th-object="${newTransaction}" method="post">
@@ -82,7 +79,7 @@
             <div class="transaction-view">
                 <select class="symbol-select select-bkg-old" id="oldCoinSold" name="oldCoin"
                         th:field="*{oldCurrencySymbol}">
-                    <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}"
+                    <option th:each="coin : ${cryptoCoinList}" th:value="${coin.getCoinId()}"
                             th:text="${coin.getCoinSymbol()}">
                     </option>
                 </select>
@@ -98,7 +95,9 @@
             </div>
             </br>
             <div class="btns-wrapper">
-                <button class="submit transaction-submit sell" type="submit" name="action" value="buy">Sell</button>
+                <button class="submit transaction-submit exchange" type="submit" name="action" value="exchange">
+                    Exchange
+                </button>
             </div>
         </form>
     </div>

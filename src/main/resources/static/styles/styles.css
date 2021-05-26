@@ -124,7 +124,7 @@ margin-top: 0;
 }
 .table-asset {
 font-size: 1.5rem;
-background-color: #5f658b;
+background-color: #5f658bb8;
 color: #fff;
 text-align: center;
 }
@@ -143,6 +143,7 @@ text-align: end;
 .symbol-select {
     font-size: 2rem;
     color: #fff;
+    min-width: 100px;
 }
 .transaction-form-wrapper > form > .transaction-view > .transaction-view-borders > input {
     outline: none;
@@ -170,8 +171,8 @@ input::-webkit-inner-spin-button {
     display: inline-flex;
 }
 .transaction-view-borders {
-    border-top: 1px solid blue;
-    border-bottom: 1px solid blue;
+    border-top: 1px solid #2929f8;
+    border-bottom: 1px solid #2929f8;
     outline: none;
     padding-top: 5px;
 }
@@ -203,17 +204,15 @@ input::-webkit-inner-spin-button {
 background-color: #008b8b
 }
 .exchange {
-background-color: #4169e1
-}
-.sell {
 background-image:  linear-gradient(to right, #008b8b , #4169e1);
 }
 .asset-history-container {
     display: flex;
     justify-content: space-between;
 }
-.history-container > h2 {
-margin-top: 0;
+.history-container > h3,
+ .asset-container > h3 {
+    margin: 0;
 }
 .history-container {
     width: 60%;
