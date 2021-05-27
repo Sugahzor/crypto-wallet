@@ -4,60 +4,102 @@
 
 <html>
 <head>
-    <link th:href="@{/styles/styles.css}" rel="stylesheet" />
+    <link th:href="@{/styles/styles.css}" rel="stylesheet"/>
     <title>Wallet Details</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 </head>
 <body class="details-body">
 
-<a th:href="@{/}" >Home<span class="bredc-decoration"> > </span></a>
-<a th:href="@{/login}" >Login<span class="bredc-decoration"> > </span></a>
+<a th:href="@{/}">Home<span class="bredc-decoration"> > </span></a>
+<a th:href="@{/login}">Login<span class="bredc-decoration"> > </span></a>
 <span>Wallet details</span>
 
 <h2 class="hello-title" th:text="'Hello, ' + ${user.getUserName()} + '!'"></h2>
 <div class="details-wrapper">
-    <div th:if="${myAssetsList.isEmpty()}" >No assets.</div>
-    <table th:if="${!myAssetsList.isEmpty()}"  style="border: 2px solid cyan">
-        <tbody>
-          <tr th:each="asset: ${myAssetsList}">
-            <td th:text="${asset.coinSymbol}" />
-            <td th:text="${asset.coinAmount}" />
-          </tr>
-        </tbody>
-    </table>
-
+    <div class="asset-history-container">
+        <div class="asset-container">
+            <h3 th:text="${myAssetsList.isEmpty()} ? 'No assets.' : 'Asset'"></h3>
+            <table th:if="${!myAssetsList.isEmpty()}" border="1" class="table table-asset">
+                <thead>
+                <tr>
+                    <td>Coin</td>
+                    <td class="cell-width">Amount</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="asset: ${myAssetsList}">
+                    <td th:text="${asset.coinSymbol}"/>
+                    <td th:text="${asset.coinAmount}" class="cell-amount"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="history-container">
+            <h3>History</h3>
+        </div>
+    </div>
+    <div class="transaction-form-wrapper">
         <form action="#" data-th-action="@{/action}" data-th-object="${newTransaction}" method="post">
 
-            <button type="submit" name="action" value="buy">Buy</button>
-            <button type="submit" name="action" value="exchange">Exchange</button>
+            <div class="btns-wrapper label-wrapper">
+                <label th:text="'Source coin: '" class="source-coin-label"/>
+                <label th:text="'Target coin: '" class="target-coin-label"/>
+            </div>
 
-            <table border="1">
-                <tr>
-                    <td><label th:text="'Source coin: '" /></td>
-<!--                    <td><input type="text" th:field="*{oldCurrencySymbol}" /></td>-->
-                    <td>
-                    <select id="oldCoin" name="oldCoin" th:field="*{oldCurrencySymbol}">
-                        <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}" th:text="${coin.getCoinSymbol()}">
-                        </option>
-                    </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label th:text="'Amount: '" /></td>
-                    <td><input type="number" step=0.01 th:field="*{transactionAmount}" /></td>
-                </tr>
-                <tr>
-                    <td><label th:text="'Target coin: '" /></td>
-<!--                    <td><input type="text" th:field="*{newCurrencySymbol}" /></td>-->
-                    <td>
-                    <select id="newCoin" name="newCoin" th:field="*{newCurrencySymbol}">
-                        <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}" th:text="${coin.getCoinSymbol()}">
-                        </option>
-                    </select>
-                    </td>
-                </tr>
-            </table>
+            <div class="transaction-view">
+                <select class="symbol-select select-bkg-new border-radius-left" id="oldCoin" name="oldCoin"
+                        th:field="*{oldCurrencySymbol}">
+                    <option th:each="coin : ${fiatCoinList}" th:value="${coin.getCoinId()}"
+                            th:text="${coin.getCoinSymbol()}">
+                    </option>
+                </select>
+                <div class="transaction-view-borders">
+                    <input placeholder="Amount" type="number" step=0.01 th:field="*{transactionAmount}"/>
+                </div>
+                <select class="symbol-select select-bkg-old border-radius-right" id="newCoin" name="newCoin"
+                        th:field="*{newCurrencySymbol}">
+                    <option th:each="coin : ${cryptoCoinList}" th:value="${coin.getCoinId()}"
+                            th:text="${coin.getCoinSymbol()}">
+                    </option>
+                </select>
+            </div>
+            </br>
+            <div class="btns-wrapper">
+                <button class="submit transaction-submit buy" type="submit" name="action" value="buy">Buy</button>
+            </div>
         </form>
+        <form action="#" data-th-action="@{/action}" data-th-object="${newTransaction}" method="post">
+
+            <div class="btns-wrapper label-wrapper">
+                <label th:text="'Source coin: '" class="source-coin-label"/>
+                <label th:text="'Target coin: '" class="target-coin-label"/>
+            </div>
+
+            <div class="transaction-view">
+                <select class="symbol-select select-bkg-old border-radius-left" id="oldCoinSold" name="oldCoin"
+                        th:field="*{oldCurrencySymbol}">
+                    <option th:each="coin : ${cryptoCoinList}" th:value="${coin.getCoinId()}"
+                            th:text="${coin.getCoinSymbol()}">
+                    </option>
+                </select>
+                <div class="transaction-view-borders">
+                    <input placeholder="Amount" type="number" step=0.01 th:field="*{transactionAmount}"/>
+                </div>
+                <select class="symbol-select select-bkg-new border-radius-right" id="newCoinSold" name="newCoin"
+                        th:field="*{newCurrencySymbol}">
+                    <option th:each="coin : ${superCoinList}" th:value="${coin.getCoinId()}"
+                            th:text="${coin.getCoinSymbol()}">
+                    </option>
+                </select>
+            </div>
+            </br>
+            <div class="btns-wrapper">
+                <button class="submit transaction-submit exchange" type="submit" name="action" value="exchange">
+                    Exchange
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 
 </body>

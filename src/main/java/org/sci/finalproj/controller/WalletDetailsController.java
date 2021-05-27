@@ -51,6 +51,8 @@ public class WalletDetailsController {
         model.addAttribute("newTransaction", transaction);
         model.addAttribute("myAssetsList", assetsList);
         model.addAttribute("superCoinList", superCoinList);
+        model.addAttribute("fiatCoinList", fiatCoinList);
+        model.addAttribute("cryptoCoinList", cryptoCoinList);
         return "wallet-details";
     }
 
@@ -60,7 +62,9 @@ public class WalletDetailsController {
         String newCoinSymbol = transaction.getNewCurrencySymbol();
         String defaultSymbol = user.getDefaultCurrencySymbol();
         assetService.buyCryptoAsset(amount, newCoinSymbol, defaultSymbol, user.getUserId());
-        return null;
+        ModelAndView mv = new ModelAndView("redirect:/wallet-details");
+        mv.addObject("userEmail", user.getUserEmail());
+        return mv;
     }
 
     @RequestMapping(value="/action", method=RequestMethod.POST, params="action=exchange")
@@ -69,7 +73,9 @@ public class WalletDetailsController {
         String newCoinSymbol = transaction.getNewCurrencySymbol();
         String oldCoinSymbol = transaction.getOldCurrencySymbol();
         assetService.exchangeCryptoAsset(amount, oldCoinSymbol, newCoinSymbol, user.getDefaultCurrencySymbol(), user.getUserId());
-        return null;
+        ModelAndView mv = new ModelAndView("redirect:/wallet-details");
+        mv.addObject("userEmail", user.getUserEmail());
+        return mv;
     }
 
 }
