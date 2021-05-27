@@ -176,13 +176,23 @@ input::-webkit-inner-spin-button {
     outline: none;
     padding-top: 5px;
 }
+.border-radius-left {
+    border-radius: 8px 0 0 8px;
+}
+.border-radius-right {
+    border-radius: 0 8px 8px 0;
+}
+img {
+max-width:  40px;
+  height: auto;
+}
 .select-bkg-old {
     background-color: #008b8b;
-    border-radius: 5px 0 0 5px;
+    cursor: pointer;
 }
 .select-bkg-new {
     background-color: #4169e1;
-    border-radius: 0 5px 5px 0;
+    cursor: pointer;
 }
 .btns-wrapper {
     display: flex;
@@ -201,7 +211,7 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
 }
 .buy {
-background-color: #008b8b
+background-image:  linear-gradient(to left, #008b8b , #4169e1);
 }
 .exchange {
 background-image:  linear-gradient(to right, #008b8b , #4169e1);
