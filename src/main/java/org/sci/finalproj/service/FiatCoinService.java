@@ -21,13 +21,13 @@ public class FiatCoinService {
 
 
     public void register(FiatCoin fiatCoin) {
-        FiatCoin existinFiat = fiatCoinRepo.findByFiatCoinSymbol(fiatCoin.getCoinSymbol());
+        FiatCoin existingFiat = fiatCoinRepo.findByFiatCoinSymbol(fiatCoin.getCoinSymbol());
 
-        if(existinFiat==null||!existinFiat.getFiatCoinName().equals(fiatCoin.getFiatCoinName())) {
+        if(existingFiat==null||!existingFiat.getFiatCoinName().equals(fiatCoin.getFiatCoinName())) {
             fiatCoinRepo.save(fiatCoin);
             LOGGER.info("Fiat has been registered");
         } else {
-            LOGGER.info("fiat is in DB");
+            LOGGER.info("Fiat is in DB");
         }
     }
 

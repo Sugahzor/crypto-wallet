@@ -22,13 +22,13 @@ public class CryptoCoinService {
 
 
     public void register(CryptoCoin cryptoCoin) {
-        CryptoCoin existingCryptoCoin = cryptoCoinRepo.findByCryptoCoinSymbol(cryptoCoin.getCryptoCoinName());
+        CryptoCoin existingCryptoCoin = cryptoCoinRepo.findByCryptoCoinSymbol(cryptoCoin.getCoinSymbol());
 
         if(existingCryptoCoin==null||!existingCryptoCoin.getCryptoCoinName().equals(cryptoCoin.getCryptoCoinName())) {
             cryptoCoinRepo.save(cryptoCoin);
-            LOGGER.info("Cryptocoin has been registered");
+            LOGGER.info("Crypto coin has been registered");
         } else {
-            LOGGER.info("fiat is in DB");
+            LOGGER.info("Crypto coin is in DB");
         }
     }
 
