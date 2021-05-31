@@ -41,9 +41,9 @@ public class UserController {
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
-//        List for the default currency dropdown :
-//        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
-//        model.addAttribute("fiatCoinList", fiatCoinList);
+////        List for the default currency dropdown :
+        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
+        model.addAttribute("fiatCoinList", fiatCoinList);
 //
 //        FiatCoin fiatCoin = new FiatCoin("Euro","€");
 //        FiatCoin fiatCoin1 = new FiatCoin("Dollar","$");
@@ -68,24 +68,25 @@ public class UserController {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
 
-//        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
-//        model.addAttribute("fiatCoinList", fiatCoinList);
-//
-//        FiatCoin fiatCoin = new FiatCoin("Euro","€");
-//        FiatCoin fiatCoin1 = new FiatCoin("Dollar","$");
-//        FiatCoin fiatCoin2 = new FiatCoin("Leu ","RON ");
-//
-//        fiatCoinService.register(fiatCoin);
-//        fiatCoinService.register(fiatCoin1);
-//        fiatCoinService.register(fiatCoin2);
-//
-//        CryptoCoin cryptoCoin = new CryptoCoin("Dogecoin","Ð");
-//        CryptoCoin cryptoCoin1 = new CryptoCoin("Bitcoin","₿");
-//        CryptoCoin cryptoCoin2 = new CryptoCoin("Ether","Ξ");
-//
-//        cryptoCoinService.register(cryptoCoin);
-//        cryptoCoinService.register(cryptoCoin1);
-//        cryptoCoinService.register(cryptoCoin2);
+//        create the Coins lists
+        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
+        model.addAttribute("fiatCoinList", fiatCoinList);
+
+        FiatCoin fiatCoin = new FiatCoin("Euro","€");
+        FiatCoin fiatCoin1 = new FiatCoin("Dollar","$");
+        FiatCoin fiatCoin2 = new FiatCoin("Leu ","RON ");
+
+        fiatCoinService.register(fiatCoin);
+        fiatCoinService.register(fiatCoin1);
+        fiatCoinService.register(fiatCoin2);
+
+        CryptoCoin cryptoCoin = new CryptoCoin("Dogecoin","Ð");
+        CryptoCoin cryptoCoin1 = new CryptoCoin("Bitcoin","₿");
+        CryptoCoin cryptoCoin2 = new CryptoCoin("Ether","Ξ");
+
+        cryptoCoinService.register(cryptoCoin);
+        cryptoCoinService.register(cryptoCoin1);
+        cryptoCoinService.register(cryptoCoin2);
         return "login";
     }
 
