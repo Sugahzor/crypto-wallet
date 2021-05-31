@@ -14,6 +14,7 @@ public interface UserRepo extends CrudRepository<User, Long> {
     // findBy => predefined syntax
     public User findByUserName(String userName);
     public User findByUserEmail(String userEmail);
+//    public List<User> findByEmail (String email);
 
 //    @Query("SELECT u FROM User u WHERE u.userName = ?1 and u.name = ?2")
 //    public User customQuery(String userName, String name);

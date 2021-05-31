@@ -11,9 +11,13 @@ public class User {
     private String userPassword;
     private Long userPhone;
 
+
+//    Create the foreign key for default Wallet currency that should be the valued from fiat coin
     @ManyToOne
-    @JoinColumn(name = "fiatCoinId", referencedColumnName = "userId")
-    private User defaultWalletCurrencyId;
+    @JoinColumn(name = "fiatCoinId", referencedColumnName = "fiatCoinId")
+    private FiatCoin fiatCoinId;
+
+//    private String defaultCurrencyId;
 
     private String defaultCurrencySymbol;
     @Id
@@ -82,11 +86,36 @@ public class User {
         this.defaultCurrencySymbol = defaultCurrencySymbol;
     }
 
-    public User getDefaultWalletCurrencyId() {
-        return defaultWalletCurrencyId;
+//    public User getFiatCoinId() {
+//        return fiatCoinId;
+//    }
+//
+//    public void setFiatCoinId(User fiatCoinId) {
+//        this.fiatCoinId = fiatCoinId;
+//    }
+//
+//    public User getDefaultWalletCurrencyId() {
+//        return defaultWalletCurrencyId;
+//    }
+//
+//    public void setDefaultWalletCurrencyId(User defaultWalletCurrencyId) {
+//        this.defaultWalletCurrencyId = defaultWalletCurrencyId;
+//    }
+
+//
+    public FiatCoin getFiatCoinId() {
+        return fiatCoinId;
     }
 
-    public void setDefaultWalletCurrencyId(User defaultWalletCurrencyId) {
-        this.defaultWalletCurrencyId = defaultWalletCurrencyId;
+    public void setFiatCoinId(FiatCoin fiatCoinId) {
+        this.fiatCoinId = fiatCoinId;
     }
+
+//    public String getDefaultCurrencyId() {
+//        return defaultCurrencyId;
+//    }
+//
+//    public void setDefaultCurrencyId(String defaultCurrencyId) {
+//        this.defaultCurrencyId = defaultCurrencyId;
+//    }
 }

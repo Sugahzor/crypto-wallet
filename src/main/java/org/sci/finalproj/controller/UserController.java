@@ -7,6 +7,7 @@ import org.sci.finalproj.service.CryptoCoinService;
 import org.sci.finalproj.service.FiatCoinService;
 import org.sci.finalproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Date;
 import java.util.*;
-
+@Component
 @Controller
 public class UserController {
     @Autowired
@@ -40,36 +41,51 @@ public class UserController {
     public String myRegisterPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
-        //List for the default currency dropdown :
-        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
-        model.addAttribute("fiatCoinList", fiatCoinList);
-
-        FiatCoin fiatCoin = new FiatCoin("Euro","€");
-        FiatCoin fiatCoin1 = new FiatCoin("Dollarelul (Bo$$ de Bo$$ ","$");
-        FiatCoin fiatCoin2 = new FiatCoin("Leutzul Greu ","RON ");
-
-        fiatCoinService.register(fiatCoin);
-        fiatCoinService.register(fiatCoin1);
-        fiatCoinService.register(fiatCoin2);
-
-        CryptoCoin cryptoCoin = new CryptoCoin("Dogecoin","Ð");
-        CryptoCoin cryptoCoin1 = new CryptoCoin("Bitcoin","₿");
-        CryptoCoin cryptoCoin2 = new CryptoCoin("Ether","Ξ");
-
-        cryptoCoinService.register(cryptoCoin);
-        cryptoCoinService.register(cryptoCoin1);
-        cryptoCoinService.register(cryptoCoin2);
-
+//        List for the default currency dropdown :
+//        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
+//        model.addAttribute("fiatCoinList", fiatCoinList);
+//
+//        FiatCoin fiatCoin = new FiatCoin("Euro","€");
+//        FiatCoin fiatCoin1 = new FiatCoin("Dollar","$");
+//        FiatCoin fiatCoin2 = new FiatCoin("Leu ","RON ");
+//
+//        fiatCoinService.register(fiatCoin);
+//        fiatCoinService.register(fiatCoin1);
+//        fiatCoinService.register(fiatCoin2);
+//
+//        CryptoCoin cryptoCoin = new CryptoCoin("Dogecoin","Ð");
+//        CryptoCoin cryptoCoin1 = new CryptoCoin("Bitcoin","₿");
+//        CryptoCoin cryptoCoin2 = new CryptoCoin("Ether","Ξ");
+//
+//        cryptoCoinService.register(cryptoCoin);
+//        cryptoCoinService.register(cryptoCoin1);
+//        cryptoCoinService.register(cryptoCoin2);
         return "register";
-
-
-
     }
 
     @RequestMapping("/login")
     public String myLoginPage(Model model) {
         User emptyUser = new User();
         model.addAttribute("user", emptyUser);
+
+//        List<FiatCoin> fiatCoinList = fiatCoinService.getFiatCoinList();
+//        model.addAttribute("fiatCoinList", fiatCoinList);
+//
+//        FiatCoin fiatCoin = new FiatCoin("Euro","€");
+//        FiatCoin fiatCoin1 = new FiatCoin("Dollar","$");
+//        FiatCoin fiatCoin2 = new FiatCoin("Leu ","RON ");
+//
+//        fiatCoinService.register(fiatCoin);
+//        fiatCoinService.register(fiatCoin1);
+//        fiatCoinService.register(fiatCoin2);
+//
+//        CryptoCoin cryptoCoin = new CryptoCoin("Dogecoin","Ð");
+//        CryptoCoin cryptoCoin1 = new CryptoCoin("Bitcoin","₿");
+//        CryptoCoin cryptoCoin2 = new CryptoCoin("Ether","Ξ");
+//
+//        cryptoCoinService.register(cryptoCoin);
+//        cryptoCoinService.register(cryptoCoin1);
+//        cryptoCoinService.register(cryptoCoin2);
         return "login";
     }
 
@@ -127,4 +143,5 @@ public class UserController {
         userService.register(user);
         return "login";
     }
+
 }

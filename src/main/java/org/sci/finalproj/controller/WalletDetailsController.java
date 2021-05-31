@@ -52,7 +52,7 @@ public class WalletDetailsController {
         model.addAttribute("myAssetsList", assetsList);
         model.addAttribute("superCoinList", superCoinList);
         return "wallet-details";
-    }
+}
 
     @RequestMapping(value="/action", method=RequestMethod.POST, params="action=buy")
     public ModelAndView buy(@ModelAttribute("newTransaction") Transaction transaction, BindingResult errors, Model model) {
