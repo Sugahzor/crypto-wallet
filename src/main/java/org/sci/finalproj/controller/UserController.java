@@ -117,6 +117,8 @@ public class UserController {
         // http://localhost:8080/hello?name=maki
         // model = un camp din view/html
 
+
+//        Is this still needed?
 		Date user1Birth =  new java.sql.Date(Calendar.getInstance().getTime().getTime());
         User user1 = new User("iulia12@lol", "Iulia1", "Sugah1", 1234_5678_9012_3456L, "$");
 		User user2 = new User("iulia212@lol", "Iulia2", "Sugah2", 1234_5678_9012_3456L, "$");
